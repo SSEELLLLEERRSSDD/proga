@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp9
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string word = "мадагаскар";//Вводим слово, которое угадываем
+            char[] a = word.ToCharArray();
+            int points = 15;
+            int len = word.Length;
+            char[] b = new char[len];
+            int pob = len;
+            for (int i = 0; i < len; i++)
+            {
+                 b[i] = '_';
+                }
+            while (points >0 && pob!=0)
+            {
+                
+                    Console.WriteLine(b);
+                
+                Console.WriteLine("Введите букву:");
+                char ans =Convert.ToChar( Console.ReadLine());
+                if(ans == '/')
+                {
+                    Console.WriteLine("Данный символ вводить нельзя!");
+                    points = 0;
+                }
+                bool flag = false;
+                for(int i = 0; i < len; i++)
+                {
+                    
+                    if(ans == a[i])
+                    {
+                        b[i] = ans;
+                        a[i] = '/';
+                        pob -= 1;
+                        flag = true;
+                    }
+                    
+                }
+                if(flag== false)
+                {
+                    Console.WriteLine("Неправильный ответ!");
+                    points -= 1;
+                }
+
+            }
+            if (points == 0)
+            {
+                Console.WriteLine("Вы проиграли!");
+            }
+            if (pob == 0)
+            {
+                Console.WriteLine("Вы победили!");
+            }
+            
+          //  Console.WriteLine(a[1]);
+            Console.ReadLine();
+        }
+    }
+}
